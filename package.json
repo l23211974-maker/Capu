@@ -1,0 +1,26 @@
+{
+  "name": "capu",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "install": "echo 'Dependencies installed with npm workspaces'",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
+    "dev:web": "npm run dev --workspace @capu/web",
+    "dev:api": "npm run dev --workspace @capu/api",
+    "build": "npm run -ws --if-present build",
+    "lint": "npm run -ws --if-present lint",
+    "typecheck": "npm run -ws --if-present typecheck",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.17.2",
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.2",
+    "vitest": "^5.0.3"
+  }
+}
